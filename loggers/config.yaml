@@ -1,0 +1,27 @@
+version: 1
+disable_existing_loggers: false
+formatters:
+  simple:
+    format: '%(levelname)s: %(message)s'
+  detailed: 
+    format: '%(levelname)s: %(name)s: %(funcName)s: %(message)s'
+  extras:
+    format: '%(levelname)s: %(funcName)s: %(message)s'
+handlers:
+  stdout:
+    class: logging.StreamHandler
+    formatter: detailed
+    stream: ext://sys.stdout
+  stdout_2:
+    class: logging.StreamHandler
+    formatter: simple  
+    stream: ext://sys.stdout
+loggers:
+  root:
+    level: DEBUG
+    handlers:
+    - stdout
+  loggers.basic_logger: 
+    handlers:
+    - stdout_2
+ 
